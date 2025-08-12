@@ -2,9 +2,6 @@ from PIL import Image, ImageDraw
 from math import sin, cos, pi
 import os
 
-# Create output folder
-os.makedirs("assets", exist_ok=True)
-
 def draw_cat(filename, size=100):
     img = Image.new("RGBA", (size, size), (0,0,0,0))
     draw = ImageDraw.Draw(img)
@@ -97,15 +94,18 @@ def draw_forest_background(filename, width=400, height=300):
         draw.polygon([(x-25, height*0.55), (x, height*0.3), (x+25, height*0.55)], fill="green")  # leaves small
     img.save(filename)
 
-# Generate all assets
-draw_cat("assets/cat.png")
-draw_dog("assets/dog.png")
-draw_bird("assets/bird.png")
-draw_fish("assets/fish.png")
-draw_tree("assets/tree.png")
-draw_cloud("assets/cloud.png")
-draw_moon("assets/moon.png")
-draw_star("assets/star.png")
-draw_forest_background("assets/forest_background.png")
+def generate_all_assets():
+    os.makedirs("assets", exist_ok=True)
+    draw_cat("assets/cat.png")
+    draw_dog("assets/dog.png")
+    draw_bird("assets/bird.png")
+    draw_fish("assets/fish.png")
+    draw_tree("assets/tree.png")
+    draw_cloud("assets/cloud.png")
+    draw_moon("assets/moon.png")
+    draw_star("assets/star.png")
+    draw_forest_background("assets/forest_background.png")
+    print("All images generated in the 'assets' folder.")
 
-print("All images generated in the 'assets' folder.")
+if __name__ == "__main__":
+    generate_all_assets()
